@@ -1,19 +1,28 @@
-/* Crie um programa em C para coleta e cálculo final de notas de alunos.A quantidade de alunos e de avaliações deve ser coletada no início da execução. Os dados deverão ser armazenados utilizando alocação dinâmica de memória. */
+/*
+ ESTRUTURA DE DADOS - Trabalho final
+ Autor: Jennifer Ruei Huang
+ Data: 07/02/2022
 
-   
+Crie um programa em C para coleta e cálculo final de notas de alunos.A quantidade de alunos e de avaliações deve ser coletada no início da execução. Os dados deverão ser armazenados utilizando alocação dinâmica de memória.*/
+
+    
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
-int main()
+int main()   
 {
-    int qtd_aluno, qtd_avaliacao;
+    int qtd_aluno, qtd_avaliacao;  
     printf("\nQuantidade de alunos: ");
     scanf("%d", &qtd_aluno);
     printf ("Numero de avaliacoes: ");
     scanf("%d", &qtd_avaliacao);
-    int* pt = (int*) malloc(qtd_aluno * sizeof(int) * qtd_avaliacao);
-    for(int i = 0; i < qtd_avaliacao; i++){
+    
+    // Cria um ponteiro quue apontará para endereços. 
+    int* pt = (int*) malloc(qtd_aluno * sizeof(int) * qtd_avaliacao); 
+    
+    // Passa por todos os alunos de cada avaliacao e pega sua nota. 
+    for(int i = 0; i < qtd_avaliacao; i++){ 
         printf("\n---\n");
         printf("Avalicao %d\n", i+1);
         for(int j = 0; j < qtd_aluno; j++){
@@ -22,12 +31,7 @@ int main()
         }
     }
 
-    /* for(int i = 0; i < qtd_avaliacao; i++){
-        for(int j = 0; j < qtd_aluno; j++){
-            printf("%d\n", pt[i * qtd_aluno + j]);
-        }
-    }*/ 
-
+    // Faz a média de cada aluno, pegando a nota das avaliações dele. 
     printf("\nResultado final \nMédias arredondadas para cima dos alunos: \n");
     for(int aluno=0; aluno < qtd_aluno; aluno++){
         float contagem = 0;
@@ -37,10 +41,9 @@ int main()
         printf("%d > %d \n", aluno+1, (int)ceil(contagem / qtd_avaliacao));
     }
 
-
     printf("\nMédia e desvio padrão (populacional) das avaliações:\n");
 
-
+    // Cria outro ponteiro e calcula a média e o desvio padrão das notas em cada avaliação. 
     int* pt_med_av = (int*) malloc(qtd_avaliacao * sizeof(int));
     for(int av=0; av < qtd_avaliacao; av++){
         float contagem = 0;
