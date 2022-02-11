@@ -2,68 +2,63 @@
 
    
 #include <stdio.h>
-/* #include <stdlib.h> */
+#include <stdlib.h>
 #include <math.h>
-    
-    
-int main() {
-    int qt_avaliacoes, qt_alunos, av, aluno;
 
-
-    printf("Quantidade de alunos: ");
-    scanf("%d", &qt_alunos);
- 
-    printf("Número de avaliações: "); 
-    scanf("%d", &qt_avaliacoes);
-    printf("-----");
-    
-    int mat[qt_avaliacoes][qt_alunos];
-    for(av=0; av < qt_avaliacoes; av++){
-        printf("\n-----\n");
-        printf("\nAvaliação %d \n", av+1);
-        for(aluno=0; aluno < qt_alunos; aluno++){
-            printf("%d > ", aluno+1);      /*aluno*/
-            
-            scanf("%d", &mat[av][aluno]);
+int main()
+{
+    int qtd_aluno, qtd_avaliacao;
+    printf("\nQuantidade de alunos: ");
+    scanf("%d", &qtd_aluno);
+    printf ("Numero de avaliacoes: ");
+    scanf("%d", &qtd_avaliacao);
+    int* pt = (int*) malloc(qtd_aluno * sizeof(int) * qtd_avaliacao);
+    for(int i = 0; i < qtd_avaliacao; i++){
+        printf("\n---\n");
+        printf("Avalicao %d\n", i+1);
+        for(int j = 0; j < qtd_aluno; j++){
+            printf("%d > ", j+1);
+            scanf("%d", &pt[i * qtd_aluno + j]);
         }
     }
-    
-    
+
+    /* for(int i = 0; i < qtd_avaliacao; i++){
+        for(int j = 0; j < qtd_aluno; j++){
+            printf("%d\n", pt[i * qtd_aluno + j]);
+        }
+    }*/ 
+
     printf("\nResultado final \nMédias arredondadas para cima dos alunos: \n");
-    for(aluno=0; aluno < qt_alunos; aluno++){
+    for(int aluno=0; aluno < qtd_aluno; aluno++){
         float contagem = 0;
-        for(av=0; av < qt_avaliacoes; av++){
-            contagem += mat[av][aluno];
+        for(int av=0; av < qtd_avaliacao; av++){
+            contagem += pt[av * qtd_aluno + aluno];
         }
-        printf("%d > %d \n", aluno+1, (int)ceil(contagem / qt_avaliacoes));
+        printf("%d > %d \n", aluno+1, (int)ceil(contagem / qtd_avaliacao));
     }
-    
-    
+
+
     printf("\nMédia e desvio padrão (populacional) das avaliações:\n");
-    
-    
-    int med_av[qt_avaliacoes];
-    for(av=0; av < qt_avaliacoes; av++){
+
+
+    int* pt_med_av = (int*) malloc(qtd_avaliacao * sizeof(int));
+    for(int av=0; av < qtd_avaliacao; av++){
         float contagem = 0;
-        for(aluno=0; aluno < qt_alunos; aluno++){
-            contagem += mat[av][aluno]; 
+        for(int aluno =0; aluno < qtd_aluno; aluno++){
+            contagem += pt[av * qtd_aluno + aluno]; 
         }
-        med_av[av] = contagem / qt_alunos;
-        
+        pt_med_av[av] = contagem / qtd_aluno;
+
         float desvio = 0;
-        for(aluno=0; aluno < qt_alunos; aluno++){
-            desvio += pow(mat[av][aluno] - med_av[av], 2);
-                
+        for(int aluno=0; aluno < qtd_aluno; aluno++){
+            desvio += pow(pt[av * qtd_aluno + aluno] - pt_med_av[av], 2);
+
         }
-        
-        printf("av %d.\t%d\t%.2f \n", av+1, med_av[av], sqrt(desvio / qt_alunos));
-        
-    }   
 
-    
-    return 0;
-    
+        printf("av %d.\t%d\t%.2f \n", av+1, pt_med_av[av], sqrt(desvio / qtd_aluno));
+
     }
-        
 
-    
+
+    return 0;
+}
