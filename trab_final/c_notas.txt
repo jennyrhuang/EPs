@@ -1,4 +1,4 @@
-/* Crie um programa em C para coleta e cálculo final de notas de alunos.A quantidade de alunos e de avaliações deve ser coletada no início da execução. Os dados deverão ser armazenados utilizando alocação dinâmica de memória.*/
+/* Crie um programa em C para coleta e cálculo final de notas de alunos.A quantidade de alunos e de avaliações deve ser coletada no início da execução. Os dados deverão ser armazenados utilizando alocação dinâmica de memória. */
 
    
 #include <stdio.h>
