@@ -8,10 +8,16 @@
 
 #include <stdio.h>
 #include <math.h>   // funções matemáticas
+#include <stdlib.h> // função qsort
+
+
+int cmpfunc (const void* a, const void* b) {
+   return ( (int)(*(float*)a * 100) - (int)(*(float*)b * 100));
+}
 
 int main(){
-    int qtd_num, numero, aux, contagem=0, j=0, conta=0;
-    float val_min, val_max, media, mediana, moda;
+    int qtd_num, numero, j=0;
+    float val_min, val_max, media, mediana, moda, contagem=0;
     double desvio;
     
     printf("Quantos números na sua série (N): "); 
@@ -19,7 +25,6 @@ int main(){
     printf("Entre com números:\n");
     
     float mat[qtd_num];
-    int cont[qtd_num]; 
     float soma = 0;
     if(qtd_num>0){
         for(int i=0; i<qtd_num; i++){
@@ -28,53 +33,33 @@ int main(){
             soma+=mat[i];
         }
     }
+    
+    qsort(mat, qtd_num, sizeof(float), cmpfunc);
         
     // valores mínimo e máximo
-    val_max = mat[0];
+    val_max = mat[qtd_num-1];
     val_min = mat[0];
-    for(int i = 0; i<qtd_num; i++){
-        if(mat[i] > val_max){
-            val_max = mat[i];
-        }
-        if(mat[i] < val_min){
-            val_min = mat[i];
-        }
-    }
         
     // média
     media = soma / qtd_num;
         
     // mediana
     int x=0;
-    if( qtd_num/2 != aux ) {
-        mediana = mat[(int)ceil(qtd_num/2)];
+    if( qtd_num%2 == 1 ) {
+        mediana = mat[qtd_num/2];
     }
     else {
-        x = mat[qtd_num/2] + mat[(qtd_num/2)+1];
-        mediana = x/2;
+        mediana = (mat[qtd_num/2-1] + mat[qtd_num/2]) / 2;
     }
          
     // desvio padrão
     for(int i=0; i<qtd_num; i++){
         contagem += pow(mat[i] - media, 2);
-        desvio = sqrt(contagem / qtd_num);
     }
+    desvio = sqrt(contagem / qtd_num);
     
-    // moda
-    for(int i=0; i<qtd_num; i++){
-        for(j=i+1; j<qtd_num; j++){
-            if(mat[i] == mat[j]){
-                cont[i]++;
-                    if(cont[i]>conta){
-                        conta=cont[i];
-                        moda=mat[i];
-                    }
-            }
-        }
-        cont[i]=0;
-    }
-    
-    printf("Valor mínimo: %.2f\nValor Máximo: %.2f\nMédia: %.2f\nMediana: %.2f\nDesvio padrão: %f\nModa: %f (aparece %d vezes)", val_min, val_max, media, mediana, desvio, moda, conta);
+
+    printf("Valor mínimo: %.2f\nValor Máximo: %.2f\nMédia: %.2f\nMediana: %.2f\nDesvio padrão: %f\n", val_min, val_max, media, mediana, desvio);
     
 }
         
