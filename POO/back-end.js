@@ -55,7 +55,7 @@ function testaCPF(evento) {
 }
 
 
-function corrigeCPF(cpf){
+function corrigeCPF(cpf) {
     document.getElementById("caixaerro").style.display='block'
     document.getElementById("mensagemerro").innerHTML = "CPF inválido: "+cpf
   
