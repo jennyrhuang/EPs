@@ -15,52 +15,51 @@ function checasenha(evento) {
       document.getElementById("caixaerro").style.display='block'
       document.getElementById("mensagemerro").innerHTML = "Verifique sua senha"
       inpsenha.focus()
-      }
+    }
 
     else {
-      ls.className = "w3-text-black"
-      lc.className = "w3-text-black"
-      ls.innerHTML = "Senha OK"
-      inpsenha.className = "w3-hide"
-      inpsenhaconf.className = "w3-hide"
-      }
+    ls.className = "w3-text-black"
+    lc.className = "w3-text-black"
+    ls.innerHTML = "Senha OK"
+    inpsenha.className = "w3-hide"
+    inpsenhaconf.className = "w3-hide"
     }
+}
   
 
-    function testaCPF(evento) {
-        var Soma;
-        var Resto;
-        Soma = 0;
+function testaCPF(evento) {
+    var Soma;
+    var Resto;
+    Soma = 0;
   
-      strCPF = evento.currentTarget.value
-      strCPF = strCPF.replace('.','')
-      strCPF = strCPF.replace('.','')
-      strCPF = strCPF.replace('-','')
+    strCPF = evento.currentTarget.value
+    strCPF = strCPF.replace('.','')
+    strCPF = strCPF.replace('.','')
+    strCPF = strCPF.replace('-','')
   
-      if (strCPF == "00000000000") corrigeCPF(strCPF);
+    if (strCPF == "00000000000") corrigeCPF(strCPF);
   
-      for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
-      Resto = (Soma * 10) % 11;
+    for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
   
-        if ((Resto == 10) || (Resto == 11))  Resto = 0;
-        if (Resto != parseInt(strCPF.substring(9, 10)) ) corrigeCPF(strCPF);
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10)) ) corrigeCPF(strCPF);
   
-      Soma = 0;
-        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
-        Resto = (Soma * 10) % 11;
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
   
-        if ((Resto == 10) || (Resto == 11))  Resto = 0;
-        if (Resto != parseInt(strCPF.substring(10, 11) ) ) corrigeCPF(strCPF);
-        return true;
-    }
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11) ) ) corrigeCPF(strCPF);
+    return true;
+}
 
 
-  function corrigeCPF(cpf){
+function corrigeCPF(cpf){
     document.getElementById("caixaerro").style.display='block'
     document.getElementById("mensagemerro").innerHTML = "CPF inválido: "+cpf
   
-      inputCPF = document.getElementById("icpf")
-      inputCPF.value=""
-      inputCPF.className = "w3-text-red"
-  }
-
+    inputCPF = document.getElementById("icpf")
+    inputCPF.value=""
+    inputCPF.className = "w3-text-red"
+}
