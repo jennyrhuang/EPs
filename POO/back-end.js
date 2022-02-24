@@ -63,25 +63,4 @@ function checasenha(evento) {
       inputCPF.value=""
       inputCPF.className = "w3-text-red"
   }
-  
-  
-    function pegaDadosCep(evento) {
-      const xhttp = new XMLHttpRequest()
-  
-      cpoCep = evento.currentTarget
-  
-      url = "https://viacep.com.br/ws/" + cpoCep.value + "/json"
-      xhttp.onload = dadosCepCarregados
-  
-      xhttp.open("GET", url);
-      xhttp.send();
-    }
-  
 
-    function dadosCepCarregados() {
-        resp = JSON.parse(this.responseText)
-        cpoLogr = document.getElementById("ilogradouro")
-        cpoLogr.value = resp.logradouro
-        cpoLogr.disabled = true
-        document.getElementById("inum").focus()
-    }
