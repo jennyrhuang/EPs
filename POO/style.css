@@ -4,33 +4,43 @@
     padding: 0;
 } 
 
+.borda {
+    background-color: rgba(191, 216, 209, 0.973);
+    width: 566px;
+    border: 15px solid rgb(28, 131, 114);
+    padding: 66px;
+    margin-left: -15em;
+}
+
 /* ID "titulo" */
 #titulo {
     font-family: serif;
-    color: #1d9e59d0;
-    margin-left: -2em;
+    color: rgb(28, 131, 114);
+    text-align: center;
 } 
 
 /* ID "subtitulo" */
 #subtitulo {
     font-family: serif;
     color: #12492b;
+    text-align: center;
 } 
 
 /* Tag <fieldset>*/
 fieldset {
     border: 0;
-    margin-left: -2em;
+    text-align: center;
 }
 
 /* Tag <body> */
 body{
+    background-image: url("https://img.freepik.com/vetores-gratis/linha-da-taxa-de-pulso-no-fundo-verde-da-carta-do-monitor-ilustracao-sobre-a-frequencia-cardiaca-e-o-monitor-do-cardiograma_72857-58.jpg?size=626&ext=jpg");
     background-color: #F0F8FF;
     font-family: serif;
     font-size: 1.05em;
     color: #0e1312;
     justify-content: center;
-    margin-left: 42%;
+    margin-left: 47%;
 }
 
 /* Elementos de tags <input>, e <button> */
@@ -39,6 +49,7 @@ input, button {
     font-size: 1.05em;
     color: #222927;
     border-radius: 5px;
+    margin: auto;
 }
 
 /* Elementos de classe "grupo" nos estados das pseudoclasses "before" e "after" */
