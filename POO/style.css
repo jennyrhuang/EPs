@@ -8,19 +8,19 @@
 #titulo {
     font-family: serif;
     color: #1d9e59d0;
-    margin-left: 20%;
+    margin-left: -2em;
 } 
 
 /* ID "subtitulo" */
 #subtitulo {
     font-family: serif;
     color: #12492b;
-    margin-left: 27%;
 } 
 
 /* Tag <fieldset>*/
 fieldset {
     border: 0;
+    margin-left: -2em;
 }
 
 /* Tag <body> */
@@ -29,12 +29,11 @@ body{
     font-family: serif;
     font-size: 1.05em;
     color: #0e1312;
-    margin-left: 24%;
-    margin-top: 3%;
     justify-content: center;
+    margin-left: 42%;
 }
 
-/* Elementos de tags <body>, <input>, e <button> */
+/* Elementos de tags <input>, e <button> */
 input, button {
     font-family: serif;
     font-size: 1.05em;
@@ -65,9 +64,9 @@ input, button {
 }
 
 /* Elementos de classe "campo" ou "grupo" de tag <fieldset> */
-fieldset.grupo .campo {
+fieldset.grupo.campo {
     float: center;
-    margin-right: 6em;
+    margin-right: 3em;
 }
 
 /* Elementos de classe "campo" das tags <input> com atributo text, email, tel e password */
